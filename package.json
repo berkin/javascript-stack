@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "precommit": "yarn test",
-	"prepush": "yarn test",
+    "prepush": "yarn test",
     "start": "babel-node .",
     "test": "eslint src && flow && jest --coverage"
   },
