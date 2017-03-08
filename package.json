@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "precommit": "npm test",
-	"prepush": "npm test",
+    "precommit": "yarn test",
+	"prepush": "yarn test",
     "start": "babel-node .",
     "test": "eslint src && flow && jest --coverage"
   },
