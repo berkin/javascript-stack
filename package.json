@@ -8,18 +8,21 @@
     "prepush": "yarn test && yarn prod:build",
     "start": "yarn dev:start",
     "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
-	"dev:wds": "webpack-dev-server --progress",
+    "dev:wds": "webpack-dev-server --progress",
     "prod:build": "rimraf lib && babel src -d lib --ignore .test.js",
     "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
     "prod:stop": "pm2 delete all",
-	"lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
+    "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
     "test": "eslint src && flow && jest --coverage"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "color": "^1.0.3",
     "compression": "^1.6.2",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-hot-loader": "next"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
@@ -29,6 +32,7 @@
     "babel-loader": "^6.4.0",
     "babel-preset-env": "^1.2.1",
     "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.23.0",
     "cross-env": "^3.2.3",
     "eslint": "^3.17.1",
     "eslint-config-airbnb": "^14.1.0",
