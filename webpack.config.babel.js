@@ -8,7 +8,7 @@ import { isProd } from './src/shared/util';
 
 export default {
   entry: [
-	'react-hot-loader/patch',
+    'react-hot-loader/patch',
     './src/client',
   ],
   output: {
@@ -29,10 +29,10 @@ export default {
     port: WDS_PORT,
     hot: true,
   },
-	plugins: [
+  plugins: [
 		  new webpack.optimize.OccurrenceOrderPlugin(),
 		  new webpack.HotModuleReplacementPlugin(),
 		  new webpack.NamedModulesPlugin(),
 		  new webpack.NoEmitOnErrorsPlugin(),
-	]
+  ],
 };

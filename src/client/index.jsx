@@ -1,24 +1,40 @@
+// @flow
+
 import 'babel-polyfill';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader'
+import { AppContainer } from 'react-hot-loader';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+
 import App from './App';
-
+import helloReducer from './reducer/hello';
 import { APP_CONTAINER_SELECTOR } from '../shared/config';
-const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)
+import { isProd } from '../shared/util';
 
-const wrapApp = AppComponent =>
-  <AppContainer>
-    <AppComponent />
-  </AppContainer>
+const store = createStore(combineReducers({ hello: helloReducer }),
+  // eslint-disable-next-line no-underscore-dangle
+  isProd ?
+	undefined :
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-ReactDOM.render(wrapApp(App), rootEl)
+const rootEl = document.querySelector(APP_CONTAINER_SELECTOR);
+
+const wrapApp = (AppComponent, reduxStore) =>
+  <Provider store={reduxStore}>
+    <AppContainer>
+      <AppComponent />
+    </AppContainer>
+  </Provider>;
+
+ReactDOM.render(wrapApp(App, store), rootEl);
 
 if (module.hot) {
   // flow-disable-next-line
-  module.hot.accept('./App', () => {
+  module.hot.accept('./app', () => {
     // eslint-disable-next-line global-require
-    const NextApp = require('./App').default
-    ReactDOM.render(wrapApp(NextApp), rootEl)
-  })
+    const NextApp = require('./app').default;
+    ReactDOM.render(wrapApp(NextApp, store), rootEl);
+  });
 }

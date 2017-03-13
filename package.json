@@ -13,6 +13,7 @@
     "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
     "prod:stop": "pm2 delete all",
     "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
+    "lint:fix": "eslint src webpack.config.babel.js --ext .js,.jsx --fix",
     "test": "eslint src && flow && jest --coverage"
   },
   "dependencies": {
@@ -20,9 +21,13 @@
     "color": "^1.0.3",
     "compression": "^1.6.2",
     "express": "^4.15.2",
+    "immutable": "^3.8.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-hot-loader": "next"
+    "react-hot-loader": "next",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-actions": "^2.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
