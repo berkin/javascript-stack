@@ -1,14 +1,23 @@
 // @flow
 
-import React from 'react'
+import React from 'react';
+import Helmet from 'react-helmet';
 
-import HelloButton from '../../container/hello-button'
-import Message from '../../container/message'
+import HelloButton from '../../container/hello-button';
+import Message from '../../container/message';
 
+const title = 'Hello';
 const HelloPage = () =>
   <div>
+    <Helmet
+      title={title}
+      meta={[
+        { name: 'description', content: 'A page to say hello' },
+        { property: 'og:title', content: title },
+      ]}
+    />
     <Message />
     <HelloButton />
-  </div>
+  </div>;
 
-export default HelloPage
+export default HelloPage;
