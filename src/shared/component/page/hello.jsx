@@ -8,7 +8,7 @@ import Message from '../../container/message';
 
 const title = 'Hello';
 const HelloPage = () =>
-  <div>
+  <div className="container mt-4">
     <Helmet
       title={title}
       meta={[
@@ -16,8 +16,13 @@ const HelloPage = () =>
         { property: 'og:title', content: title },
       ]}
     />
-    <Message />
-    <HelloButton />
+    <div className="row">
+      <div className="col-12">
+        <h1>{title}</h1>
+        <Message />
+        <HelloButton />
+      </div>
+    </div>
   </div>;
 
 export default HelloPage;
