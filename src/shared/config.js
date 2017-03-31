@@ -1,5 +1,8 @@
 // @flow
 
+export const JSS_SSR_CLASS = 'jss-ssr';
+export const JSS_SSR_SELECTOR = `.${JSS_SSR_CLASS}`;
+
 export const WEB_PORT = process.env.PORT || 8000;
 export const STATIC_PATH = '/static';
 export const APP_NAME = 'Hey! World';
