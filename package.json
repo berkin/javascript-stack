@@ -9,11 +9,11 @@
     "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
     "dev:wds": "webpack-dev-server --progress",
     "prod:build": "rimraf lib && babel src -d lib --ignore .test.js",
-    "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
-    "prod:stop": "pm2 delete all",
+    "prod:start": "heroku local",
     "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
     "lint:fix": "eslint src webpack.config.babel.js --ext .js,.jsx --fix",
-    "test": "eslint src && flow && jest --coverage"
+    "test": "eslint src && flow && jest --coverage",
+	"heroku-postbuild": "npm run prod:build"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
@@ -48,6 +48,7 @@
     "babel-preset-env": "^1.2.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.23.0",
+    "coveralls": "^2.13.0",
     "cross-env": "^3.2.3",
     "eslint": "^3.17.1",
     "eslint-config-airbnb": "^14.1.0",
